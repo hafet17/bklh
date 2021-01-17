@@ -12,14 +12,22 @@ class UserModel extends Model
 
 	protected $table = 'tbuser';
 
-	public function getUser($id = false)
+	// public function getUser($id = false)
+	// {
+	// 	if ($id === false) {
+	// 		$this->db->table($this->table);
+	// 		return $this->db->query("SELECT tbsantri.nama,tbsantri.asrama,tbuser.jenis,tbuser.iduser FROM tbuser JOIN tbsantri WHERE tbuser.idsantri=tbsantri.idsantri");
+	// 	} else {
+	// 		return $this->getWhere(['iduser' => $id]);
+	// 	}
+	// }
+
+	public function getUser()
 	{
-		if ($id === false) {
-			$this->db->table($this->table);
-			return $this->db->query("SELECT tbsantri.nama,tbsantri.asrama,tbuser.jenis,tbuser.iduser FROM tbuser JOIN tbsantri WHERE tbuser.idsantri=tbsantri.idsantri");
-		} else {
-			return $this->getWhere(['iduser' => $id]);
-		}
+		// return $this->findAll();
+		return $this->db->table('tbuser')
+			->join('tbsantri', 'tbsantri.idsantri=tbuser.iduser')
+			->get()->getResultArray();
 	}
 
 	public function Auth($username, $password)

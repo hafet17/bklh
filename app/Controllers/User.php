@@ -1,4 +1,7 @@
-<?php namespace App\Controllers;
+<?php
+
+namespace App\Controllers;
+
 use App\Models\UserModel;
 
 class User extends BaseController
@@ -12,6 +15,7 @@ class User extends BaseController
 		echo view('_partials/sidebar');
 		echo view('user/view', $data);
 		echo view('_partials/footer');
+		// var_dump($data['user']);
 	}
 	//--------------------------------------------------------------------
 
@@ -64,4 +68,3 @@ class User extends BaseController
 		return redirect()->to('/jadwal');
 	}
 }
-

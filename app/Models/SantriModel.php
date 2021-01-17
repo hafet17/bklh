@@ -1,4 +1,7 @@
-<?php namespace App\Models;
+<?php
+
+namespace App\Models;
+
 use CodeIgniter\Model;
 
 /**
@@ -6,18 +9,15 @@ use CodeIgniter\Model;
  */
 class SantriModel extends Model
 {
-	
+
 	protected $table = 'tbsantri';
 
 	public function getSantri($id = false)
 	{
 		if ($id === false) {
 			return $this->findAll();
-		}else{
+		} else {
 			return $this->getWhere(['id' => $id]);
 		}
 	}
 }
-
-
- ?>
